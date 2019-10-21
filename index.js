@@ -28,6 +28,7 @@ app.use(passport.session());
 
 require("./server/routes/authRoutes")(app);
 require("./server/routes/billingRoutes")(app);
+require("./server/routes/surveyRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
