@@ -6,8 +6,7 @@ import * as actions from "../actions";
 import Header from "./Header";
 import Landing from "./Landing";
 import Dashboard from "./Dashboard";
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
+import SurveyNew from "./surveys/SurveyNew";
 
 const App = props => {
   useEffect(() => {
@@ -15,17 +14,15 @@ const App = props => {
   }, [props]);
 
   return (
-    <div className="container">
-      <BrowserRouter>
-        <div>
-          <Header />
+    <BrowserRouter>
+      <div className="container">
+        <Header />
 
-          <Route exact path="/" component={Landing} />
-          <Route exact path="/surveys" component={Dashboard} />
-          <Route path="/surveys/new" component={SurveyNew} />
-        </div>
-      </BrowserRouter>
-    </div>
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/surveys" component={Dashboard} />
+        <Route path="/surveys/new" component={SurveyNew} />
+      </div>
+    </BrowserRouter>
   );
 };
 
