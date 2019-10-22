@@ -10,7 +10,10 @@ require("./server/models/User");
 require("./server/models/Survey");
 require("./server/services/passport");
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(keys.mongoURI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+});
 
 const app = express();
 
