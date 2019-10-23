@@ -1,15 +1,14 @@
-const path = require("path");
 const express = require("express");
 const mongoose = require("mongoose");
 const cookieSession = require("cookie-session");
 const passport = require("passport");
 const bodyParser = require("body-parser");
-
 const keys = require("./server/config/keys");
 require("./server/models/User");
 require("./server/models/Survey");
 require("./server/services/passport");
 
+mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
@@ -36,6 +35,7 @@ require("./server/routes/surveyRoutes")(app);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 
+  const path = require("path");
   app.get("*", (req, res) => {
     res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
   });
